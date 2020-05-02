@@ -1,1 +1,0 @@
-document.write ('<A HREF="https://ads.td.com/RealMedia/ads/click_lx.ads/www.td.com/tdct/en/login/2029358003/Frame1/default/empty.gif/38643755684672506e31594141766833?x" target="_top"><IMG SRC="https://oasc17.247realmedia.com/RealMedia/ads/Creatives/default/empty.gif/0"  WIDTH=1 HEIGHT=1 ALT="" BORDER=0 BORDER="0"></A>');
