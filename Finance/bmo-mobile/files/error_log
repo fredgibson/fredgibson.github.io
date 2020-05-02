@@ -1,0 +1,19 @@
+[17-Jun-2019 21:09:14 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/add/errorcheck.php on line 218
+[17-Jun-2019 21:09:14 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/add/errorcheck.php on line 221
+[17-Jun-2019 21:21:35 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/add/errorcheck.php on line 218
+[17-Jun-2019 21:21:35 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/add/errorcheck.php on line 221
+[08-Jul-2019 21:15:21 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 221
+[08-Jul-2019 21:15:21 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 224
+[08-Jul-2019 21:25:16 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 221
+[08-Jul-2019 21:25:16 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 224
+[08-Jul-2019 21:28:08 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 221
+[08-Jul-2019 21:28:08 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 224
+[08-Jul-2019 21:36:11 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 221
+[08-Jul-2019 21:36:11 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 224
+[08-Jul-2019 21:43:30 UTC] PHP Warning:  Use of undefined constant HTTP_CLIENT_IP - assumed 'HTTP_CLIENT_IP' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 221
+[08-Jul-2019 21:43:30 UTC] PHP Warning:  Use of undefined constant REMOTE_ADDR - assumed 'REMOTE_ADDR' (this will throw an Error in a future version of PHP) in /home/drivi7rcklh/public_html/tst/files/errorcheck.php on line 224
+[24-Dec-2019 00:53:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function phpsession_start() in /home/khairfor/public_html/tst/inter/securelogin/bmo-mobile/files/error.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/khairfor/public_html/tst/inter/securelogin/bmo-mobile/files/error.php on line 1
+[30-Dec-2019 03:05:13 UTC] PHP Parse error:  syntax error, unexpected 'session_start' (T_STRING) in /home/khairfor/public_html/tst/inter/securelogin/bmo-mobile/files/errorcheck.php on line 12

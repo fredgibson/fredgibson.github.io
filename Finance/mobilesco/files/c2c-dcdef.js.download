@@ -1,0 +1,13 @@
+/**
+ * Define the data centre specific URL. A tiny JS not allowed to be
+ * cached in user agent
+ * 
+ * Author: Richard Zhang
+ * 
+ */
+(function() {
+	if (BnsC2CLoader === undefined) {
+		throw "c2c-loader.js not included";
+	}
+	BnsC2CLoader.c2cSiteRootURL = 'https://www2.livehelp.scotiabank.com/';
+})();

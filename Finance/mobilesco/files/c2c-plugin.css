@@ -1,0 +1,51 @@
+/**
+ * dynamically created by c2c-loader.js
+ *
+*/
+
+div.c2c_container_blocking_zindex {
+	z-index: 3001;
+}
+
+div.c2c_container_zindex {
+	z-index: 3002;
+}
+
+div.c2c_cls_blocking_zindex {
+	z-index: 3011;
+}
+
+div.c2c_cls_container_zindex {
+	z-index: 3012;
+}
+
+div.c2c_blocking_cover {
+	background: none repeat scroll 0 0 #000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+div.c2c_blocking_cover_opacity_40p {
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+
+div.c2c_blocking_cover_opacity_0p {
+	opacity: 0.0;
+	filter: alpha(opacity=0);
+}
+
+div.c2c_container {
+}
+
+div.c2c_container_show_chat {
+	bottom: 0px;
+	right: 0px;
+	position: fixed;
+	padding: 0;
+	border: 0;
+	width:500px;
+}

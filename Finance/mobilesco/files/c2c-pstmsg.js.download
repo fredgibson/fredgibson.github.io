@@ -1,0 +1,138 @@
+/* 
+ * BNS wrapped plugin to support cross domain inter-window message posting
+ * via HTML5 postMessage. Any user agent without HTML 5 postMessage supported,
+ * C2C chat would not be supported in it.
+ *
+ * Author: Richard Zhang, Victor Cheung
+ * 
+ */
+(function(window, undefined) {
+
+	var attached_callback;
+		
+	/**
+	 * if any name clission, hold the previous BnsPostMessage
+	*/
+	(function(){
+		if (!String.prototype.trim) {
+			String.prototype.trim = function() {
+				return this.replace(/^\s+|\s+$/g,'');
+			}
+		}
+		window._BnsPostMessage = window.BnsPostMessage;
+	})();
+	
+    var BnsPostMessage = {
+	
+		version: "1.0",
+		
+		msgCmdSeparator: ':',
+		paramSeparator: ';',
+		paramKeyValSeparator: '=',
+		
+		paramHeight: 'height',
+		paramWidth: 'width',
+		
+		rootURLCmd: 'rooturl',
+		
+		trustedDomain: '.scotiabank.com',
+		
+		
+		/**
+		 * message format: 
+		 * 1. generaly, message is just a command for the message receiver to perform certain task, in this case
+		 * only alphanumeric letters are valid, especially do not use ':' in the command message.
+		 * 2. for the case of beside command, extra data need to be sent to pear, must use the format of
+		 * command: command data, where command must be alpha numeric letters only.
+		 *
+		*/
+        postMessage: function(message, target_url, target) {
+            
+            if (!target_url) { 
+                return; 
+            }
+    
+            target = target || parent;  // default to parent
+    
+            if (window.postMessage) {
+				//parent window must be on target_url
+                target.postMessage(message, target_url);
+            } 
+        },
+  
+		/*
+		 * source_origin: the URL from which window the message is fired and received in
+		 * this end. It must be string
+		*/
+        receiveMessage: function(callback, source_origin) {
+            
+            // browser supports window.postMessage
+            if (! window.postMessage) {
+				return;
+			}
+            if (! source_origin || (typeof source_origin !== 'string')) {
+            	throw 'source_origin: root url of message oroginator must be provided';
+            }
+			// bind the callback to the actual event associated with window.postMessage
+			if (callback) {
+				attached_callback = function(e) {
+					//source origin can have more info than e.origin, which can be just protocol://host:port
+					if (e.origin !== source_origin 
+							&& source_origin.indexOf(e.origin) != 0 
+							&& e.origin.indexOf(BnsPostMessage.trustedDomain) < 0) {
+						return false;
+					}
+					callback(e);
+				};
+			}
+			if (window['addEventListener']) {
+				window[callback ? 'addEventListener' : 'removeEventListener']('message', attached_callback, !1);
+			} else {
+				window[callback ? 'attachEvent' : 'detachEvent']('onmessage', attached_callback);
+			}
+        },
+		
+		/**
+		 * Return JS object with cmd and cmdData properties for the case of command: data
+		*/
+		parseMessage: function(msg) {
+			msgCmd = { cmd: null, cmdData: null };
+			index = msg.indexOf(BnsPostMessage.msgCmdSeparator);
+			if (index < 0) {
+				msgCmd.cmd = msg;
+			} else {
+				msgCmd.cmd = msg.substr(0, index).trim();
+				msgCmd.cmdData = msg.substr(index+1).trim();
+			}
+			return msgCmd;
+		},
+		
+		/**
+		 * hooking the message handlers via call back, url belongs to the window, from where the message is fired out
+		 * toward.
+		*/
+		hookMsgHandlers: function(handlers, src_origin_url) {
+			if (handlers === undefined) {
+				throw "hookMsgHandlers: Message hanlders (message id to handler function) not defined";
+			}
+			if (! src_origin_url) {
+				throw "hookMsgHandlers: URL not defined";
+			}
+			this.receiveMessage(function(message) {
+				msgCmd = BnsPostMessage.parseMessage(message.data);
+				if (handlers[msgCmd.cmd]) {
+					if (msgCmd.cmdData == null) {
+						handlers[msgCmd.cmd]();
+					} else {
+						handlers[msgCmd.cmd](msgCmd.cmdData);
+					}
+				} else if (handlers.defaultHandler) {
+					handlers.defaultHandler();
+				}
+			}, src_origin_url);
+		}
+    };
+
+    window.BnsPostMessage = BnsPostMessage;
+
+})(window);
